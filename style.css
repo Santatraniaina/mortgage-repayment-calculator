@@ -25,6 +25,20 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('./assets/fonts/PlusJakartaSans-VariableFont_wght.ttf') format('ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Plus Jakarta Sans Italic';
+    src: url('./assets/fonts/PlusJakartaSans-Italic-VariableFont_wght.ttf') format('ttf');
+    font-weight: 500;
+    font-style: italic;
+}
+
 /* Global Styles */
 body {
     background-color: var(--slate-100);
@@ -48,7 +62,31 @@ a{
     color: inherit;
 }
 
+fieldset{
+    border: none;
+}
+
+h2{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+p{
+    line-height: 1.25rem;
+    font-size: .825rem;
+    color: var(--slate-300);
+}
+
 /* Utility Classes */
+.d-none{
+    display: none;
+}
+
+.d-block{
+    display: block;
+}
+
 .input-group{
     display: flex;
     flex-direction: column;
@@ -73,10 +111,9 @@ a{
     width: 50%;
 }
 
-
 /* Custom Style */
 .container {
-    max-width: 65rem;
+    max-width: 60rem;
     display: flex;
     background-color: var(--white);
     border-radius: 1rem;
@@ -118,30 +155,60 @@ a{
     background-color: var(--slate-900);
 
     .default-display{
-        display: flex;
+        display: none;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100%;
 
         h2{
-            font-size: 1.5rem;
-            font-weight: 700;
             color: var(--white);
-            margin: 1rem 0;
         }
 
         p{
-            font-size: 1rem;
             padding: 0 1.5rem;
-            color: var(--slate-300);
             text-align: center;
         }
 
     }
 
     .result{
-        display: none;
+        h2{
+            color: var(--white);
+        }
+
+        p{
+            margin-bottom: 1.5rem;
+        }
+
+        .result-card{
+            background-color: var(--slate-900);
+            padding: 1.5rem;
+            border-top: 4px solid var(--lime);
+
+            span{
+                display: block;
+            }
+
+            .result-monthly{
+                padding-bottom: 2rem;
+                border-bottom: 1px solid var(--slate-700);
+            }
+
+            .amount-monthly{
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: var(--lime);
+                margin-top: 1rem;
+            }
+
+            .amount-total{
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--white  );
+                margin-top: .5rem;
+            }
+        }
     }
 }
 
