@@ -32,19 +32,19 @@
 						<label for="interest-rate">Interest Rate</label>
 						<input type="number" min="0" max="100" id="interest-rate"/>
 					</div>
-					<div class="input-group">
-						<label for="mortgage-type">Mortgage Type</label>
-						<fieldset id="mortgage-type">
+					<fieldset class="input-group">
+						<legend class="form-label">Mortgage Type</legend>
+						<div class="form-input radio-group">
 							<label for="repayment" class="input-radio">
-								<input type="radio" id="repayment" name="repayment" value="repayment"/>
+								<input type="radio" id="repayment" name="mortgage-type" value="repayment"/>
 								<span>Repayment</span>
 							</label>
 							<label for="interest" class="input-radio">
-								<input type="radio" id="interest" name="interest" value="interest"/>
+								<input type="radio" id="interest" name="mortgage-type" value="interest"/>
 								<span>Interest Only</span>
 							</label>
-						</fieldset>
-					</div>
+						</div>
+					</fieldset>
 				</div>
 
 				<button type="submit" class="calculate">
