@@ -11,51 +11,58 @@
 
 	<body>
 		<main class="container">
-			<form class="form-container" action="#" method="post">
-				<div class="form-title">
-					<h2>Mortgage Calculator</h2>
-					<a href="#" role="button" class="clear">
+			<form class="form-container">
+				<div class="form-header">
+					<h2 class="form-title">Mortgage Calculator</h2>
+					<button type="reset" class="form-clear">
 						Clear All
-					</a>
+					</button>
 				</div>
 
 				<div class="form-body">
 					<div class="input-group">
-						<label for="mortgage-amount">Mortgage Amount</label>
-						<input type="text" id="mortgage-amount"/>
+						<label class="form-label" for="amount">Mortgage Amount</label>
+						<input class="form-input" type="text" id="amount" name="amount"/>
+						<span class="form-error">This field is required</span>
 					</div>
-					<div class="input-group input-group--half">
-						<label for="mortgage-term">Mortgage Term</label>
-						<input type="text" id="mortgage-term"/>
+
+					<div class="input-group--half">
+						<label class="form-label" for="term">Mortgage Term</label>
+						<input class="form-input" type="text" id="term" name="term"/>
+						<span class="form-error">This field is required</span>
 					</div>
-					<div class="input-group input-group--half">
-						<label for="interest-rate">Interest Rate</label>
-						<input type="number" min="0" max="100" id="interest-rate"/>
+
+					<div class="input-group--half">
+						<label class="form-label" for="rate">Interest Rate</label>
+						<input class="form-input" type="number" min="0" max="100" id="rate" name="rate"/>
+						<span class="form-error">This field is required</span>
 					</div>
-					<fieldset class="input-group">
-						<legend class="form-label">Mortgage Type</legend>
-						<div class="form-input radio-group">
-							<label for="repayment" class="input-radio">
-								<input type="radio" id="repayment" name="mortgage-type" value="repayment"/>
-								<span>Repayment</span>
-							</label>
-							<label for="interest" class="input-radio">
-								<input type="radio" id="interest" name="mortgage-type" value="interest"/>
-								<span>Interest Only</span>
-							</label>
+
+					<div class="input-group">
+						<p class="form-label">Mortgage Type</p>
+						<div class="form-input-radio">
+							<div class="input-radio">
+								<input type="radio" id="repayment" name="type" value="repayment"/>
+								<label for="repayment">Repayment</label>
+							</div>
+							<div class="input-radio">
+								<input type="radio" id="interest" name="type" value="interest"/>
+								<label for="interest">Interest Only</label>
+							</div>
 						</div>
-					</fieldset>
+						<span class="form-error">This field is required</span>
+					</div>
 				</div>
 
-				<button type="submit" class="calculate">
-					<img src="./assets/images/icon-calculator.svg" alt="Calculator">
+				<button type="submit" class="form-submit calculate">
+					<img src="./assets/images/icon-calculator.svg" alt="Calculator"/>
 					<span>Calculate Repayments</span>
 				</button>
 			</form>
 
 			<div class="form-preview">
 				<div class="default-display">
-					<img src="./assets/images/illustration-empty.svg" alt="Illusteration of a calculator">
+					<img src="./assets/images/illustration-empty.svg" alt="Illusteration of a calculator"/>
 					<h2>Results shown here</h2>
 					<p>
 						Complete the form and click “calculate repayments” to see what
