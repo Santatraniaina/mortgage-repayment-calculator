@@ -155,15 +155,8 @@ p{
             padding: .5rem 1rem;
             border: 1px solid var(--slate-700);
             border-radius: .25rem;
-
-            > *{
-                display: block;
-            }
-
-            label{
-                color: var(--slate-900);
-                font-weight: 700;
-            }
+            color: var(--slate-900);
+            font-weight: 700;
 
             input[type="radio"]{
                 appearance: none;
