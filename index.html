@@ -26,20 +26,20 @@
 						<span class="form-error">This field is required</span>
 					</div>
 
-					<div class="input-group--half">
+					<div class="input-group-half">
 						<label class="form-label" for="term">Mortgage Term</label>
 						<input class="form-input" type="text" id="term" name="term"/>
 						<span class="form-error">This field is required</span>
 					</div>
 
-					<div class="input-group--half">
+					<div class="input-group-half">
 						<label class="form-label" for="rate">Interest Rate</label>
 						<input class="form-input" type="number" min="0" max="100" id="rate" name="rate"/>
 						<span class="form-error">This field is required</span>
 					</div>
 
 					<div class="input-group">
-						<p class="form-label">Mortgage Type</p>
+						<span class="form-label">Mortgage Type</span>
 						<div class="form-input-radio">
 							<div class="input-radio">
 								<input type="radio" id="repayment" name="type" value="repayment"/>
@@ -54,10 +54,12 @@
 					</div>
 				</div>
 
-				<button type="submit" class="form-submit calculate">
-					<img src="./assets/images/icon-calculator.svg" alt="Calculator"/>
-					<span>Calculate Repayments</span>
-				</button>
+				<div class="form-footer">
+					<button type="submit" class="calculate">
+						<img src="./assets/images/icon-calculator.svg" alt="Calculator"/>
+						<span>Calculate Repayments</span>
+					</button>
+				</div>
 			</form>
 
 			<div class="form-preview">
