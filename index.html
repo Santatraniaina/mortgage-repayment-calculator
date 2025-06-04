@@ -19,26 +19,40 @@
 					</button>
 				</div>
 
+				<!-- TODO: Remove the UP/DOWN in number's input -->
+				<!-- TODO: Implement Error States -->
+				<!-- TODO: Fix custom font -->
+
+
 				<div class="form-body">
-					<div class="input-group">
+					<div class="form-control">
 						<label class="form-label" for="amount">Mortgage Amount</label>
-						<input class="form-input" type="text" id="amount" name="amount"/>
+						<div class="form-input">
+							<span class="prefix">£</span>
+							<input class="input" type="number" min="0" id="amount" name="amount"/>
+						</div>
 						<span class="form-error">This field is required</span>
 					</div>
 
-					<div class="input-group-half">
+					<div class="form-control form-half">
 						<label class="form-label" for="term">Mortgage Term</label>
-						<input class="form-input" type="text" id="term" name="term"/>
+						<div class="form-input">
+							<input class="input" type="number" id="term" name="term"/>
+							<span class="suffix">years</span>
+						</div>
 						<span class="form-error">This field is required</span>
 					</div>
 
-					<div class="input-group-half">
+					<div class="form-control form-half">
 						<label class="form-label" for="rate">Interest Rate</label>
-						<input class="form-input" type="number" min="0" max="100" id="rate" name="rate"/>
+						<div class="form-input">
+							<input class="input" type="number" min="0" max="100" id="rate" name="rate"/>
+							<span class="suffix">%</span>
+						</div>
 						<span class="form-error">This field is required</span>
 					</div>
 
-					<div class="input-group">
+					<div class="form-control">
 						<span class="form-label">Mortgage Type</span>
 						<div class="form-input-radio">
 							<label class="input-radio" for="repayment">

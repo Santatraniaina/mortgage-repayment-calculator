@@ -42,6 +42,7 @@
 /* Global Styles */
 body {
     background-color: var(--slate-100);
+    color: var(--slate-900);
     width: 100%;
     height: 100dvh;
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -73,13 +74,47 @@ p{
     font-size: .825rem;
 }
 
-/* Utility Classes */
+span {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--slate-900);
+}
 
+input {
+    cursor: pointer;
+}
+
+input:not([type="radio"]) {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--slate-900);
+    padding: .5rem .8rem;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* Utility Classes */
+.prefix, .suffix {
+    background-color: var(--slate-100);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--slate-700);
+    padding: .5rem .8rem;
+    font-weight: 700;
+    font-size: .875rem;
+}
+
+.prefix {
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+.suffix {
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+}
 
 
 /* Custom Style */
 .container {
-    max-width: 50rem;
+    max-width: 55rem;
     display: flex;
     background-color: var(--white);
     border-radius: 1rem;
@@ -87,7 +122,7 @@ p{
 
 .form-container{
     flex-basis: 50%;
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     border-radius: inherit;
     background-color: var(--white);
 
@@ -113,32 +148,41 @@ p{
         gap: 1.25rem .5rem;
     }
 
-    .input-group, .input-group-half{
+    .form-control{
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: .25rem;
+        gap: .5rem;
 
         .form-label {
-            color: var(--slate-700);
+            color: var(--slate-500);
+            font-size: .85rem;
         }
 
         .form-input{
-            padding: .5rem .75rem;
-            border: 1px solid var(--slate-700);
+            display: flex;
+            border: 1px solid var(--slate-500);
             border-radius: .25rem;
-            color: var(--slate-900);
-            font-weight: 700;
-            font-size: 1.1rem;
 
-            &:focus{
+            .input{
+                width: 100%;
+                border: none;
                 outline: none;
-                border: 1px solid var(--slate-700);
-                caret-color: var(--slate-700);
+                border-radius: inherit;
             }
 
-            &:invalid{
-                border: 1px solid var(--red);
+            &:hover {
+                border-color: var(--slate-900);
+                cursor: pointer;
+            }
+        }
+
+        .form-input:has(input:focus) {
+            border-color: var(--lime);
+
+            > .prefix, .suffix {
+                color: var(--slate-900);
+                background-color: var(--lime);
             }
         }
 
@@ -151,12 +195,13 @@ p{
         .input-radio{
             display: flex;
             align-items: center;
-            gap: .5rem;
+            gap: 1rem;
             padding: .5rem 1rem;
-            border: 1px solid var(--slate-700);
+            border: 1px solid var(--slate-500);
             border-radius: .25rem;
             color: var(--slate-900);
             font-weight: 700;
+            font-size: .875rem;
 
             input[type="radio"]{
                 appearance: none;
@@ -175,18 +220,25 @@ p{
                 }
             }
 
+            &:hover{
+                border-color: var(--lime);
+                cursor: pointer;
+            }
+
             &:has(input:checked){
                 border: 1px solid var(--lime);
+                background-color: hsla(61, 70%, 52%, 0.15);
             }
         }
 
         .form-error{
+            display: none;
             color: var(--red);
             font-size: .825rem;
         }
     }
 
-    .input-group-half{
+    .form-half{
         width: calc(50% - 0.5rem);
     }
 
@@ -201,6 +253,10 @@ p{
             gap: .5rem;
             padding: .5rem 1.5rem;
             border-radius: 2rem;
+
+            &:hover{
+                background-color: hsla(61, 70%, 52%, 0.5);
+            }
         }
     }
 
