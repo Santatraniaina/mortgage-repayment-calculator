@@ -12,10 +12,11 @@
     --red: hsl(4, 69%, 50%);
     --white:hsl(0, 0%, 100%);
     --slate-100: hsl(202, 86%, 94%);
-    --slate-300: hsl(203, 41%, 72%);
-    --slate-500: hsl(200, 26%, 54%);
-    --slate-700: hsl(200, 24%, 40%);
+    --slate-300: hsl(202, 41%, 72%);
+    --slate-500: hsl(202, 26%, 54%);
+    --slate-700: hsl(202, 24%, 40%);
     --slate-900: hsl(202, 55%, 16%);
+    --slate-dark: hsl(202, 55%, 12%);
 }
 
 @font-face {
@@ -89,6 +90,18 @@ input:not([type="radio"]) {
     padding: .5rem .8rem;
     font-weight: 700;
     font-size: 1rem;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
 }
 
 /* Utility Classes */
@@ -278,11 +291,12 @@ input:not([type="radio"]) {
     border-bottom-left-radius: 4rem;
     border-bottom-right-radius: inherit;
 
-    color: var(--slate-100);
+    color: var(--slate-300);
     background-color: var(--slate-900);
 
     .default-display{
-        display: flex;
+        /*display: flex;*/
+        display: none;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -300,7 +314,7 @@ input:not([type="radio"]) {
     }
 
     .result{
-        display: none;
+        /*display: none;*/
 
         h2{
             color: var(--white);
@@ -311,12 +325,14 @@ input:not([type="radio"]) {
         }
 
         .result-card{
-            background-color: var(--slate-900);
+            background-color: var(--slate-dark);
             padding: 1.5rem;
             border-top: 4px solid var(--lime);
+            border-radius: .5rem;
 
             span{
                 display: block;
+                color: var(--slate-300);
             }
 
             .result-monthly{
