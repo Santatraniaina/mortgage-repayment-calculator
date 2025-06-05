@@ -20,7 +20,6 @@
 				</div>
 
 				<!-- TODO: Remove the UP/DOWN in number's input -->
-				<!-- TODO: Implement Error States -->
 				<!-- TODO: Fix custom font -->
 
 
@@ -29,42 +28,38 @@
 						<label class="form-label" for="amount">Mortgage Amount</label>
 						<div class="form-input">
 							<span class="prefix">£</span>
-							<input class="input" type="number" min="0" id="amount" name="amount"/>
+							<input class="input" type="number" min="0" id="amount" name="amount" data-error="This field is required"/>
 						</div>
-						<span class="form-error">This field is required</span>
 					</div>
 
 					<div class="form-control form-half">
 						<label class="form-label" for="term">Mortgage Term</label>
 						<div class="form-input">
-							<input class="input" type="number" id="term" name="term"/>
+							<input class="input" type="number" id="term" name="term" data-error="This field is required"/>
 							<span class="suffix">years</span>
 						</div>
-						<span class="form-error">This field is required</span>
 					</div>
 
 					<div class="form-control form-half">
 						<label class="form-label" for="rate">Interest Rate</label>
 						<div class="form-input">
-							<input class="input" type="number" min="0" max="100" id="rate" name="rate"/>
+							<input class="input" type="number" min="0" max="100" id="rate" name="rate" data-error="This field is required"/>
 							<span class="suffix">%</span>
 						</div>
-						<span class="form-error">This field is required</span>
 					</div>
 
 					<div class="form-control">
 						<span class="form-label">Mortgage Type</span>
 						<div class="form-input-radio">
 							<label class="input-radio" for="repayment">
-								<input type="radio" id="repayment" name="type" value="repayment"/>
+								<input type="radio" id="repayment" name="type" value="repayment" data-error="This field is required"/>
 								Repayment
 							</label>
 							<label class="input-radio" for="interest">
-								<input type="radio" id="interest" name="type" value="interest"/>
+								<input type="radio" id="interest" name="type" value="interest" data-error="This field is required"/>
 								Interest Only
 							</label>
 						</div>
-						<span class="form-error">This field is required</span>
 					</div>
 				</div>
 

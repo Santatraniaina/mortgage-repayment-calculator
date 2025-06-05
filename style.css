@@ -102,19 +102,19 @@ input:not([type="radio"]) {
 }
 
 .prefix {
-    border-top-left-radius: .25rem;
-    border-bottom-left-radius: .25rem;
+    border-top-left-radius: .125rem;
+    border-bottom-left-radius: .125rem;
 }
 
 .suffix {
-    border-top-right-radius: .25rem;
-    border-bottom-right-radius: .25rem;
+    border-top-right-radius: .125rem;
+    border-bottom-right-radius: .125rem;
 }
 
 
 /* Custom Style */
 .container {
-    max-width: 55rem;
+    max-width: 50rem;
     display: flex;
     background-color: var(--white);
     border-radius: 1rem;
@@ -186,6 +186,15 @@ input:not([type="radio"]) {
             }
         }
 
+        .invalid{
+            border-color: var(--red);
+
+            > .prefix, .suffix {
+                color: white;
+                background-color: var(--red);
+            }
+        }
+
         .form-input-radio{
             display: flex;
             flex-direction: column;
@@ -232,7 +241,6 @@ input:not([type="radio"]) {
         }
 
         .form-error{
-            display: none;
             color: var(--red);
             font-size: .825rem;
         }
