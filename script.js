@@ -1,5 +1,16 @@
 const formControls = document.querySelectorAll('.form-control');
 const form = document.querySelector('form');
+const result = document.querySelector('.result');
+const defaultDisplay = document.querySelector('.default-display')
+
+function formatCurrency(amount) {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'GBP',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(amount);
+}
 
 function displayError(input) {
     const message = `<span class='form-error'>${input.dataset.error}</span>`;
@@ -22,18 +33,25 @@ function clearForm() {
     })
 }
 
+function resetForm() {
+    clearForm();
+    result.classList.remove('show');
+    defaultDisplay.classList.remove('hidden');
+    form.reset();
+}
+
 function submitForm(event) {
     event.preventDefault();
     clearForm();
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+    let errors = 0;
 
     // Validate inputs
     formControls.forEach( formControl => {
         const input = formControl.querySelector('input:not([type="radio"])');
         const radios = formControl.querySelectorAll('input[type="radio"]');
-        let errors = 0;
 
         if (input && (!input.value || input.value.trim() === '')) {
              errors += displayError(input);
@@ -41,14 +59,13 @@ function submitForm(event) {
         if (radios.length > 0 && !Array.from(radios).some(radio => radio.checked)) {
             errors += displayError(radios[0]);
         }
-
-        if (errors > 0) {
-            return false;
-        }
     })
 
-    // TODO : Calculate mortgage repayment
-    console.log("DATA", data);
+    if (errors > 0) {
+        return -1;
+    }
+
+    // Process the form data
     const amount = parseFloat(data.amount);
     const term = parseFloat(data.term);
     const rate = parseFloat(data.rate);
@@ -63,11 +80,15 @@ function submitForm(event) {
     const monthlyRepayment = amount * (up / down);
     const monthlyInterestOnly = amount * monthlyInterestRate;
 
+    const monthly = type === 'repayment' ? monthlyRepayment : monthlyInterestOnly
     const totalPayment = (type === 'repayment' ? monthlyRepayment : monthlyInterestOnly) * months;
 
-    console.log(`Monthly Payment: ${monthlyRepayment.toFixed(2)}`);
-    console.log(`Monthly Interest Only: ${monthlyInterestOnly.toFixed(2)}`);
-    console.log(`Total Payment: ${totalPayment.toFixed(2)}`);
+    defaultDisplay.classList.add('hidden');
+    result.classList.add('show');
+
+    result.querySelector('.amount-monthly').textContent = `${formatCurrency(monthly)}`;
+    result.querySelector('.amount-total').textContent = `${formatCurrency(totalPayment)}`;
 }
 
-form.addEventListener('submit', submitForm)
+form.addEventListener('reset', resetForm);
+form.addEventListener('submit', submitForm);

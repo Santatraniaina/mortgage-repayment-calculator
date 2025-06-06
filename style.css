@@ -124,6 +124,14 @@ input[type=number] {
     border-bottom-right-radius: .125rem;
 }
 
+.hidden {
+    display: none !important;
+}
+
+.show {
+    display: block !important;
+}
+
 
 /* Custom Style */
 .container {
@@ -295,8 +303,7 @@ input[type=number] {
     background-color: var(--slate-900);
 
     .default-display{
-        /*display: flex;*/
-        display: none;
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -314,7 +321,7 @@ input[type=number] {
     }
 
     .result{
-        /*display: none;*/
+        display: none;
 
         h2{
             color: var(--white);
