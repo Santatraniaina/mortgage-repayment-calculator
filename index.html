@@ -35,7 +35,7 @@
 					<div class="form-control form-half">
 						<label class="form-label" for="term">Mortgage Term</label>
 						<div class="form-input">
-							<input class="input" type="number" id="term" name="term" data-error="This field is required"/>
+							<input class="input" type="number" min="1" step="1" id="term" name="term" data-error="This field is required"/>
 							<span class="suffix">years</span>
 						</div>
 					</div>
@@ -43,7 +43,7 @@
 					<div class="form-control form-half">
 						<label class="form-label" for="rate">Interest Rate</label>
 						<div class="form-input">
-							<input class="input" type="number" min="0" max="100" id="rate" name="rate" data-error="This field is required"/>
+							<input class="input" type="number" min="1" step="0.25" max="100" id="rate" name="rate" data-error="This field is required"/>
 							<span class="suffix">%</span>
 						</div>
 					</div>

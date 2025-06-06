@@ -48,6 +48,26 @@ function submitForm(event) {
     })
 
     // TODO : Calculate mortgage repayment
+    console.log("DATA", data);
+    const amount = parseFloat(data.amount);
+    const term = parseFloat(data.term);
+    const rate = parseFloat(data.rate);
+    const type = data.type;
+
+    const monthlyInterestRate = rate / 100 / 12; // Convert annual rate to monthly and percentage to decimal
+    const months = term * 12;
+
+    const up = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, months);
+    const down = Math.pow(1 + monthlyInterestRate, months) - 1;
+
+    const monthlyRepayment = amount * (up / down);
+    const monthlyInterestOnly = amount * monthlyInterestRate;
+
+    const totalPayment = (type === 'repayment' ? monthlyRepayment : monthlyInterestOnly) * months;
+
+    console.log(`Monthly Payment: ${monthlyRepayment.toFixed(2)}`);
+    console.log(`Monthly Interest Only: ${monthlyInterestOnly.toFixed(2)}`);
+    console.log(`Total Payment: ${totalPayment.toFixed(2)}`);
 }
 
 form.addEventListener('submit', submitForm)
