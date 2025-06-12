@@ -1,12 +1,20 @@
 const formControls = document.querySelectorAll('.form-control');
 const form = document.querySelector('form');
 const result = document.querySelector('.result');
-const defaultDisplay = document.querySelector('.default-display')
+const defaultDisplay = document.querySelector('.default-display');
+const amount = document.getElementById("amount");
 
 function formatCurrency(amount) {
     return new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'GBP',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(amount);
+}
+
+function formatNumber(amount) {
+    return new Intl.NumberFormat('en-US', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
     }).format(amount);
@@ -90,5 +98,13 @@ function submitForm(event) {
     result.querySelector('.amount-total').textContent = `${formatCurrency(totalPayment)}`;
 }
 
+function applyFormatOnAmount(event) {
+    const value = event.target.value;
+    if (value !== null && value !== undefined && value.trim() !== '') {
+        event.target.value = formatNumber(parseFloat(value));
+    }
+}
+
+amount.addEventListener('change', applyFormatOnAmount);
 form.addEventListener('reset', resetForm);
 form.addEventListener('submit', submitForm);
