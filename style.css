@@ -140,6 +140,7 @@ input[type=number] {
     display: flex;
     background-color: var(--white);
     border-radius: 1rem;
+    margin: 1.25rem;
 }
 
 .form-container{
@@ -269,7 +270,8 @@ input[type=number] {
     }
 
     .form-half{
-        width: calc(50% - 0.5rem);
+        /*width: calc(50% - 0.5rem);*/
+        flex: 1;
     }
 
     .form-footer{
@@ -366,6 +368,7 @@ input[type=number] {
 
 /* Dedicate */
 .attribution {
+    z-index: -1;
     font-size: 11px;
     text-align: center;
     position: fixed;
@@ -374,4 +377,42 @@ input[type=number] {
 
 .attribution a {
     color: hsl(228, 45%, 44%);
+}
+
+/* 375px */
+@media (max-width: 375px) {
+    .container {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .form-header {
+        flex-direction: column;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+
+        .form-clear{
+            margin-top: .75rem;
+        }
+    }
+
+    .form-body {
+        flex-direction: column;
+
+        > .form-half {
+            width: 100%;
+            flex: 1;
+        }
+    }
+
+    .form-preview {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .calculate {
+        margin: 0 auto;
+    }
 }
