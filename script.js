@@ -4,20 +4,15 @@ const result = document.querySelector('.result');
 const defaultDisplay = document.querySelector('.default-display');
 const amount = document.getElementById("amount");
 
-function formatCurrency(amount) {
-    return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'GBP',
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    }).format(amount);
-}
+function formatNumber(amount, toCurrency = false) {
+    if (isNaN(amount)) return '';
 
-function formatNumber(amount) {
-    return new Intl.NumberFormat('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    }).format(amount);
+    const formatOptions = {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+        ...(toCurrency && { style: 'currency', currency: 'GBP' })
+    };
+    return new Intl.NumberFormat('en-US', formatOptions).format(amount);
 }
 
 function displayError(input) {
@@ -74,7 +69,7 @@ function submitForm(event) {
     }
 
     // Process the form data
-    const amount = parseFloat(data.amount);
+    const amount = parseFloat(data.amount.replace(/,/g, ''));
     const term = parseFloat(data.term);
     const rate = parseFloat(data.rate);
     const type = data.type;
@@ -94,8 +89,8 @@ function submitForm(event) {
     defaultDisplay.classList.add('hidden');
     result.classList.add('show');
 
-    result.querySelector('.amount-monthly').textContent = `${formatCurrency(monthly)}`;
-    result.querySelector('.amount-total').textContent = `${formatCurrency(totalPayment)}`;
+    result.querySelector('.amount-monthly').textContent = `${formatNumber(monthly, true)}`;
+    result.querySelector('.amount-total').textContent = `${formatNumber(totalPayment, true)}`;
 }
 
 function applyFormatOnAmount(event) {
