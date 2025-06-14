@@ -1,8 +1,10 @@
-const formControls = document.querySelectorAll('.form-control');
+const formGroups = document.querySelectorAll('.form__group');
 const form = document.querySelector('form');
 const result = document.querySelector('.result');
 const defaultDisplay = document.querySelector('.default-display');
 const amount = document.getElementById("amount");
+
+
 
 function formatNumber(amount, toCurrency = false) {
     if (isNaN(amount)) return '';
@@ -24,8 +26,8 @@ function displayError(input) {
 }
 
 function clearForm() {
-    formControls.forEach( formControl => {
-        const formInput = formControl.querySelector('.form-input');
+    formGroups.forEach( formControl => {
+        const formInput = formControl.querySelector('.form__input');
         const formError = formControl.querySelector('.form-error');
         if (formInput) {
             formInput.classList.remove('invalid');
@@ -43,38 +45,13 @@ function resetForm() {
     form.reset();
 }
 
-function submitForm(event) {
-    event.preventDefault();
-    clearForm();
-
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-    let errors = 0;
-
-    // Validate inputs
-    formControls.forEach( formControl => {
-        const input = formControl.querySelector('input:not([type="radio"])');
-        const radios = formControl.querySelectorAll('input[type="radio"]');
-
-        if (input && (!input.value || input.value.trim() === '')) {
-             errors += displayError(input);
-        }
-        if (radios.length > 0 && !Array.from(radios).some(radio => radio.checked)) {
-            errors += displayError(radios[0]);
-        }
-    })
-
-    if (errors > 0) {
-        return -1;
-    }
-
-    // Process the form data
+function calculateRepayments(data) {
     const amount = parseFloat(data.amount.replace(/,/g, ''));
     const term = parseFloat(data.term);
     const rate = parseFloat(data.rate);
     const type = data.type;
 
-    const monthlyInterestRate = rate / 100 / 12; // Convert annual rate to monthly and percentage to decimal
+    const monthlyInterestRate = rate / 100 / 12;
     const months = term * 12;
 
     const up = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, months);
@@ -93,12 +70,39 @@ function submitForm(event) {
     result.querySelector('.amount-total').textContent = `${formatNumber(totalPayment, true)}`;
 }
 
+function submitForm(event) {
+    event.preventDefault();
+    clearForm();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    let errors = 0;
+
+    // Validate inputs
+    formGroups.forEach( formControl => {
+        const input = formControl.querySelector('input:not([type="radio"])');
+        const radios = formControl.querySelectorAll('input[type="radio"]');
+
+        if (input && (!input.value || input.value.trim() === '')) {
+             errors += displayError(input);
+        }
+        if (radios.length > 0 && !Array.from(radios).some(radio => radio.checked)) {
+            errors += displayError(radios[0]);
+        }
+    })
+
+    if (errors > 0)  return -1;
+    calculateRepayments(data)
+}
+
 function applyFormatOnAmount(event) {
     const value = event.target.value;
     if (value !== null && value !== undefined && value.trim() !== '') {
         event.target.value = formatNumber(parseFloat(value));
     }
 }
+
+
 
 amount.addEventListener('change', applyFormatOnAmount);
 form.addEventListener('reset', resetForm);

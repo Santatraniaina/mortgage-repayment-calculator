@@ -5,6 +5,8 @@
     box-sizing: border-box;
 }
 
+
+
 /* Variables */
 :root{
     /* Colors */
@@ -40,12 +42,14 @@
     font-style: italic;
 }
 
+
+
 /* Global Styles */
 body {
     background-color: var(--slate-100);
     color: var(--slate-900);
     width: 100%;
-    height: 100dvh;
+    height: 100vh;
     font-family: 'Plus Jakarta Sans', sans-serif;
     /*font-weight: 500;*/
     font-size: 16px;
@@ -105,6 +109,8 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
+
+
 /* Utility Classes */
 .prefix, .suffix {
     background-color: var(--slate-100);
@@ -134,6 +140,7 @@ input[type=number] {
 }
 
 
+
 /* Custom Style */
 .container {
     max-width: 50rem;
@@ -143,157 +150,155 @@ input[type=number] {
     margin: 1.25rem;
 }
 
-.form-container{
+.form {
     flex-basis: 50%;
     padding: 2.5rem 2rem;
     border-radius: inherit;
     background-color: var(--white);
+}
 
-    .form-header{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-        color: var(--slate-900);
+.form__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    color: var(--slate-900);
 
-        .form-clear{
-            color: var(--slate-700);
-            font-size: .825rem;
-            text-decoration: underline;
-        }
+    .form__clear {
+        color: var(--slate-500);
+        font-size: .825rem;
+        text-decoration: underline;
     }
+}
 
-    .form-body{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 1.25rem .5rem;
-    }
+.form__body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.25rem .5rem;
+}
 
-    .form-control{
+.form__group {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
+}
+
+.form__group--half {
+    flex: 1;
+}
+
+.form__label {
+    color: var(--slate-500);
+    font-size: .85rem;
+}
+
+.form__input {
+    display: flex;
+    border: 1px solid var(--slate-500);
+    border-radius: .25rem;
+
+    .input{
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: .5rem;
+        border: none;
+        outline: none;
+        border-radius: inherit;
+    }
 
-        .form-label {
-            color: var(--slate-500);
-            font-size: .85rem;
-        }
+    &:hover {
+        border-color: var(--slate-900);
+        cursor: pointer;
+    }
 
-        .form-input{
-            display: flex;
-            border: 1px solid var(--slate-500);
-            border-radius: .25rem;
+    &:has(input:focus) {
+        border-color: var(--lime);
 
-            .input{
-                width: 100%;
-                border: none;
-                outline: none;
-                border-radius: inherit;
-            }
-
-            &:hover {
-                border-color: var(--slate-900);
-                cursor: pointer;
-            }
-        }
-
-        .form-input:has(input:focus) {
-            border-color: var(--lime);
-
-            > .prefix, .suffix {
-                color: var(--slate-900);
-                background-color: var(--lime);
-            }
-        }
-
-        .invalid{
-            border-color: var(--red);
-
-            > .prefix, .suffix {
-                color: white;
-                background-color: var(--red);
-            }
-        }
-
-        .form-input-radio{
-            display: flex;
-            flex-direction: column;
-            gap: .5rem;
-        }
-
-        .input-radio{
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: .5rem 1rem;
-            border: 1px solid var(--slate-500);
-            border-radius: .25rem;
+        > .prefix, .suffix {
             color: var(--slate-900);
-            font-weight: 700;
-            font-size: .875rem;
-
-            input[type="radio"]{
-                appearance: none;
-                -webkit-appearance: none;
-                border-radius: 50%;
-                border: 3px solid #FFF;
-                height: 1rem;
-                width: 1rem;
-
-                /* The outline will be the outer circle */
-                outline: 1px solid var(--slate-700);
-
-                &:checked{
-                    background: var(--lime);
-                    outline: 1px solid var(--lime);
-                }
-            }
-
-            &:hover{
-                border-color: var(--lime);
-                cursor: pointer;
-            }
-
-            &:has(input:checked){
-                border: 1px solid var(--lime);
-                background-color: hsla(61, 70%, 52%, 0.15);
-            }
-        }
-
-        .form-error{
-            color: var(--red);
-            font-size: .825rem;
-        }
-    }
-
-    .form-half{
-        /*width: calc(50% - 0.5rem);*/
-        flex: 1;
-    }
-
-    .form-footer{
-        margin-top: 2rem;
-
-        .calculate{
             background-color: var(--lime);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-            padding: .5rem 1.5rem;
-            border-radius: 2rem;
+        }
+    }
 
-            &:hover{
-                background-color: hsla(61, 70%, 52%, 0.5);
-            }
+    &.invalid {
+        border-color: var(--red);
+
+        > .prefix, .suffix {
+            color: white;
+            background-color: var(--red);
         }
     }
 }
 
-.form-preview{
+.form__input--radio{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.radio{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .5rem 1rem;
+    border: 1px solid var(--slate-500);
+    border-radius: .25rem;
+    color: var(--slate-900);
+    font-weight: 700;
+    font-size: .875rem;
+
+    input[type="radio"]{
+        appearance: none;
+        -webkit-appearance: none;
+        border-radius: 50%;
+        border: 3px solid #FFF;
+        height: 1rem;
+        width: 1rem;
+
+        /* The outline will be the outer circle */
+        outline: 1px solid var(--slate-700);
+
+        &:checked{
+            background: var(--lime);
+            outline: 1px solid var(--lime);
+        }
+    }
+
+    &:hover{
+        border-color: var(--lime);
+        cursor: pointer;
+    }
+
+    &:has(input:checked){
+        border: 1px solid var(--lime);
+        background-color: hsla(61, 70%, 52%, 0.15);
+    }
+}
+
+.form-error{
+    color: var(--red);
+    font-size: .825rem;
+}
+
+.form__footer{
+    margin-top: 2rem;
+
+    .calculate{
+        background-color: var(--lime);
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        padding: .5rem 1.5rem;
+        border-radius: 2rem;
+
+        &:hover{
+            background-color: hsla(61, 70%, 52%, 0.5);
+        }
+    }
+}
+
+.preview{
     flex-basis: 50%;
     padding: 2rem;
     border-top-left-radius: 0;
@@ -303,67 +308,67 @@ input[type=number] {
 
     color: var(--slate-300);
     background-color: var(--slate-900);
+}
 
-    .default-display{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
+.default-display{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 
-        h2{
-            color: var(--white);
-        }
-
-        p{
-            padding: 0 1.5rem;
-            text-align: center;
-        }
-
+    h2{
+        color: var(--white);
     }
 
-    .result{
-        display: none;
-
-        h2{
-            color: var(--white);
-        }
-
-        p{
-            margin-bottom: 1.5rem;
-        }
-
-        .result-card{
-            background-color: var(--slate-dark);
-            padding: 1.5rem;
-            border-top: 4px solid var(--lime);
-            border-radius: .5rem;
-
-            span{
-                display: block;
-                color: var(--slate-300);
-            }
-
-            .result-monthly{
-                padding-bottom: 2rem;
-                border-bottom: 1px solid var(--slate-700);
-            }
-
-            .amount-monthly{
-                font-size: 2.5rem;
-                font-weight: 700;
-                color: var(--lime);
-                margin-top: 1rem;
-            }
-
-            .amount-total{
-                font-size: 1.5rem;
-                font-weight: 700;
-                color: var(--white  );
-                margin-top: .5rem;
-            }
-        }
+    p{
+        padding: 0 1.5rem;
+        text-align: center;
     }
+
+}
+
+.result{
+    display: none;
+
+    h2{
+        color: var(--white);
+    }
+
+    p{
+        margin-bottom: 1.5rem;
+    }
+}
+
+.result__card{
+    background-color: var(--slate-dark);
+    padding: 1.5rem;
+    border-top: 4px solid var(--lime);
+    border-radius: .5rem;
+
+    span{
+        display: block;
+        color: var(--slate-300);
+    }
+}
+
+.result__monthly{
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--slate-700);
+}
+
+.amount-monthly{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--lime);
+    margin-top: 1rem;
+}
+
+.amount-total{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white  );
+    margin-top: .5rem;
 }
 
 /* Dedicate */
@@ -379,37 +384,43 @@ input[type=number] {
     color: hsl(228, 45%, 44%);
 }
 
-/* 375px */
-@media (max-width: 375px) {
+@media (max-width: 768px) {
+    body {
+        height: auto;
+    }
+
     .container {
         flex-direction: column;
+        margin-bottom: 2.5rem;
+    }
+
+    .preview {
+        border-radius: inherit;
+    }
+}
+
+/* 375px */
+@media (max-width: 425px) {
+    .container {
         margin: 0;
     }
 
-    .form-header {
+    .form__header {
         flex-direction: column;
         justify-content: flex-start !important;
         align-items: flex-start !important;
 
-        .form-clear{
+        .form__clear{
             margin-top: .75rem;
         }
     }
 
-    .form-body {
-        flex-direction: column;
-
-        > .form-half {
-            width: 100%;
-            flex: 1;
-        }
+    .form__group--half {
+        flex: none;
     }
 
-    .form-preview {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
+    .preview, .container {
+        border-radius: 0;
     }
 
     .calculate {

@@ -11,49 +11,49 @@
 
 	<body>
 		<main class="container">
-			<form class="form-container">
-				<div class="form-header">
-					<h2 class="form-title">Mortgage Calculator</h2>
-					<button type="reset" class="form-clear">
+			<form class="form">
+				<div class="form__header">
+					<h2 class="form__title">Mortgage Calculator</h2>
+					<button type="reset" class="form__clear">
 						Clear All
 					</button>
 				</div>
 
 				<!-- TODO: Fix custom font -->
 				<!-- TODO: Apply BEM CSS Principle -->
-				<div class="form-body">
-					<div class="form-control">
-						<label class="form-label" for="amount">Mortgage Amount</label>
-						<div class="form-input">
+				<div class="form__body">
+					<div class="form__group">
+						<label class="form__label" for="amount">Mortgage Amount</label>
+						<div class="form__input">
 							<span class="prefix">£</span>
 							<input class="input" type="text" id="amount" name="amount" data-error="This field is required"/>
 						</div>
 					</div>
 
-					<div class="form-control form-half">
-						<label class="form-label" for="term">Mortgage Term</label>
-						<div class="form-input">
+					<div class="form__group form__group--half">
+						<label class="form__label" for="term">Mortgage Term</label>
+						<div class="form__input">
 							<input class="input" type="number" min="1" step="1" id="term" name="term" data-error="This field is required"/>
 							<span class="suffix">years</span>
 						</div>
 					</div>
 
-					<div class="form-control form-half">
-						<label class="form-label" for="rate">Interest Rate</label>
-						<div class="form-input">
-							<input class="input" type="number"  min="1" step="0.25" max="100" id="rate" name="rate" data-error="This field is required"/>
+					<div class="form__group form__group--half">
+						<label class="form__label" for="rate">Interest Rate</label>
+						<div class="form__input">
+							<input class="input" type="number" min="1" step="0.25" max="100" id="rate" name="rate" data-error="This field is required"/>
 							<span class="suffix">%</span>
 						</div>
 					</div>
 
-					<div class="form-control">
-						<span class="form-label">Mortgage Type</span>
-						<div class="form-input-radio">
-							<label class="input-radio" for="repayment">
+					<div class="form__group">
+						<span class="form__label">Mortgage Type</span>
+						<div class="form__input--radio">
+							<label class="radio" for="repayment">
 								<input type="radio" id="repayment" name="type" value="repayment" data-error="This field is required"/>
 								Repayment
 							</label>
-							<label class="input-radio" for="interest">
+							<label class="radio" for="interest">
 								<input type="radio" id="interest" name="type" value="interest" data-error="This field is required"/>
 								Interest Only
 							</label>
@@ -61,7 +61,7 @@
 					</div>
 				</div>
 
-				<div class="form-footer">
+				<div class="form__footer">
 					<button type="submit" class="calculate">
 						<img src="./assets/images/icon-calculator.svg" alt="Calculator"/>
 						<span>Calculate Repayments</span>
@@ -69,7 +69,7 @@
 				</div>
 			</form>
 
-			<div class="form-preview">
+			<div class="preview">
 				<div class="default-display">
 					<img src="./assets/images/illustration-empty.svg" alt="Illusteration of a calculator"/>
 					<h2>Results shown here</h2>
@@ -84,12 +84,12 @@
 						Your results are shown below based on the information you provided.
 						To adjust the results, edit the form and click “calculate repayments” again.
 					</p>
-					<div class="result-card">
-						<p class="result-monthly">
+					<div class="result__card">
+						<p class="result__monthly">
 							<span>Your monthly repayments</span>
 							<span class="amount-monthly">£000,000.00</span>
 						</p>
-						<p class="result-total">
+						<p class="result__total">
 							<span>Total you'll repay over the term</span>
 							<span class="amount-total">£000,000.00</span>
 						</p>
