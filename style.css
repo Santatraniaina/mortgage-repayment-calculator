@@ -300,14 +300,22 @@ input[type=number] {
 
 .preview{
     flex-basis: 50%;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
     border-top-left-radius: 0;
     border-top-right-radius: inherit;
     border-bottom-left-radius: 4rem;
     border-bottom-right-radius: inherit;
-
     color: var(--slate-300);
     background-color: var(--slate-900);
+}
+
+.preview__title {
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.preview__description {
+    margin-bottom: 1.5rem;
 }
 
 .default-display{
@@ -316,59 +324,50 @@ input[type=number] {
     justify-content: center;
     align-items: center;
     height: 100%;
-
-    h2{
-        color: var(--white);
-    }
-
-    p{
-        padding: 0 1.5rem;
-        text-align: center;
-    }
-
+    text-align: center;
 }
 
-.result{
+.result {
     display: none;
-
-    h2{
-        color: var(--white);
-    }
-
-    p{
-        margin-bottom: 1.5rem;
-    }
 }
 
-.result__card{
+.result__card {
     background-color: var(--slate-dark);
     padding: 1.5rem;
     border-top: 4px solid var(--lime);
     border-radius: .5rem;
+}
 
-    span{
-        display: block;
-        color: var(--slate-300);
-    }
+.result__text{
+    display: block;
+    color: var(--slate-300);
+    margin-bottom: .5rem;
 }
 
 .result__monthly{
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--slate-700);
+
+    > * {
+        display: block;
+    }
 }
 
-.amount-monthly{
+.result__total {
+    margin-top: 1.5rem;
+}
+
+.amount-monthly {
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--lime);
-    margin-top: 1rem;
+    padding-top: 1rem;
 }
 
-.amount-total{
+.amount-total {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--white  );
-    margin-top: .5rem;
+    color: var(--white);
 }
 
 /* Dedicate */

@@ -10,8 +10,8 @@ function formatNumber(amount, toCurrency = false) {
     if (isNaN(amount)) return '';
 
     const formatOptions = {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
+        minimumFractionDigits: (toCurrency ? 2 : 0),
+        maximumFractionDigits: (toCurrency ? 2 : 0),
         ...(toCurrency && { style: 'currency', currency: 'GBP' })
     };
     return new Intl.NumberFormat('en-US', formatOptions).format(amount);
