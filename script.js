@@ -6,15 +6,15 @@ const amount = document.getElementById("amount");
 
 
 
-function formatNumber(amount, toCurrency = false) {
-    if (isNaN(amount)) return '';
+function formatNumber(value, toCurrency = false) {
+    if (isNaN(value)) return '';
 
     const formatOptions = {
         minimumFractionDigits: (toCurrency ? 2 : 0),
         maximumFractionDigits: (toCurrency ? 2 : 0),
         ...(toCurrency && { style: 'currency', currency: 'GBP' })
     };
-    return new Intl.NumberFormat('en-US', formatOptions).format(amount);
+    return new Intl.NumberFormat('en-US', formatOptions).format(value);
 }
 
 function displayError(input) {
@@ -40,8 +40,8 @@ function clearForm() {
 
 function resetForm() {
     clearForm();
-    result.classList.remove('show');
-    defaultDisplay.classList.remove('hidden');
+    defaultDisplay.style.display = 'flex';
+    result.style.display = 'none';
     form.reset();
 }
 
@@ -63,8 +63,8 @@ function calculateRepayments(data) {
     const monthly = type === 'repayment' ? monthlyRepayment : monthlyInterestOnly
     const totalPayment = (type === 'repayment' ? monthlyRepayment : monthlyInterestOnly) * months;
 
-    defaultDisplay.classList.add('hidden');
-    result.classList.add('show');
+    defaultDisplay.style.display = 'none';
+    result.style.display = 'block';
 
     result.querySelector('.amount-monthly').textContent = `${formatNumber(monthly, true)}`;
     result.querySelector('.amount-total').textContent = `${formatNumber(totalPayment, true)}`;
